@@ -36,7 +36,7 @@ export default function cartReducer(state = initialState, action) {
 }
 ```
 
-> Friendly reminder, you'll be much better off if you take the time to write out the snippets on this page! Copying/pasting is faster, but you'll never learn this structure if you don't take the time to write it out.
+> ⚠️ Friendly reminder, you'll be much better off if you take the time to write out the snippets on this page! Copying/pasting is faster, but you'll never learn this structure if you don't take the time to write it out.
 
 Let's use that reducer in our main index, `src/index.js`:
 
@@ -68,7 +68,7 @@ ReactDOM.render(
 To review, a few things are happening here:
 
 - We import the reducer we just created
-- We create a new Redux store with that reducer, as well as some code to enable the Redux browser devtools
+- We create a new Redux store with that reducer, as well as some code to enable the Redux browser devtools.
 - We import `Provider` from the react-redux bindings, and pass it our new store. The `Provider` wraps around our entire application.
 
 Finally, create 1 more new file: `src/actions.js`. For now, it can remain empty.
@@ -156,7 +156,7 @@ export default function cartReducer(state = initialState, action) {
 +   case 'ADD_ITEM': {
 +     return {
 +       ...state,
-+       [action.item.id] = {
++       [action.item.id]: {
 +         ...action.item,
 +         quantity: 1,
 +       }
@@ -234,7 +234,7 @@ There's a problem though. We want to select the state as an _array_ of items, so
 We need to specify a custom selector function, something like:
 
 ```js
-const getStoreItemArray = state => Object.values(state);
+const getStoreItemArray = (state) => Object.values(state);
 ```
 
 It's good practice to keep selector functions _colocated_ with the reducers. So, let's move this function to the reducer file:
