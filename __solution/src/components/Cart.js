@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
-import { getItemArray, getSubtotal } from '../../reducers';
-import { formatPriceForHumans } from '../../helpers';
+import { getItemArray, getSubtotal } from '../reducers';
+import { formatPriceForHumans } from '../helpers';
 
-import CartItem from '../CartItem';
-import Button from '../Button';
+import CartItem from './CartItem';
+import Button from './Button';
 
 const Cart = () => {
   const items = useSelector(getItemArray);
@@ -21,7 +21,7 @@ const Cart = () => {
         </Subtitle>
 
         <ItemList>
-          {items.map(item => (
+          {items.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
         </ItemList>

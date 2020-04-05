@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Icon } from 'react-icons-kit';
 import { x } from 'react-icons-kit/feather/x';
 
-import { updateQuantity, removeItem } from '../../actions';
+import { updateQuantity, removeItem } from '../actions';
 
-import UnstyledButton from '../UnstyledButton';
+import UnstyledButton from './UnstyledButton';
 
 const CartItem = ({ item }) => {
-  const itemQuantity = useSelector(state => state.items[item.id].quantity);
+  const itemQuantity = useSelector((state) => state.items[item.id].quantity);
   const dispatch = useDispatch();
 
   return (
@@ -24,7 +24,7 @@ const CartItem = ({ item }) => {
         Quantity:{' '}
         <TextInput
           value={itemQuantity}
-          onChange={ev => dispatch(updateQuantity(item.id, ev.target.value))}
+          onChange={(ev) => dispatch(updateQuantity(item.id, ev.target.value))}
         />
       </Body>
     </Wrapper>
