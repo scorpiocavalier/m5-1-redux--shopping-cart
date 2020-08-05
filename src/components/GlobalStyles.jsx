@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -14,6 +14,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Lato';
     -webkit-font-smoothing: antialiased;
   }
-`;
 
-export default GlobalStyles;
+  button {
+    border: none;
+  }
+`
+
+export default GlobalStyles
