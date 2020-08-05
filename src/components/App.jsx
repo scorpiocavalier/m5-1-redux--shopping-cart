@@ -10,24 +10,28 @@ export default () => {
   return (
     <Grid>
       <GlobalStyles />
+
       <Header>
         <Logo />
       </Header>
-      <ItemGridWrapper>
+
+      <Main>
         <ItemGrid />
-      </ItemGridWrapper>
-      <Cart />
+      </Main>
+
+      <Sidebar>
+        <Cart />
+      </Sidebar>
     </Grid>
   )
 }
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 75vw 25vw;
-  grid-template-rows: auto;
+  grid: auto / 3fr minmax(350px, 1fr);
   grid-template-areas:
-    'header cart'
-    'main cart';
+    'header sidebar'
+    'main sidebar';
 `
 
 const Header = styled.header`
@@ -35,7 +39,11 @@ const Header = styled.header`
   padding: 32px 64px;
 `
 
-const ItemGridWrapper = styled.main`
+const Main = styled.main`
   grid-area: main;
   padding: 16px 64px;
+`
+
+const Sidebar = styled.div`
+  grid-area: sidebar;
 `
