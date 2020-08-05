@@ -1,44 +1,41 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import GlobalStyles from './GlobalStyles'
 import Logo from './Logo'
 import ItemGrid from './ItemGrid'
-import GlobalStyles from './GlobalStyles'
 import Cart from './Cart'
 
-const App = () => {
+export default () => {
   return (
-    <MainWrapper>
-      <ShopWrapper>
-        <Header>
-          <Logo />
-        </Header>
-        <ItemGridWrapper>
-          <ItemGrid />
-        </ItemGridWrapper>
-        <GlobalStyles />
-      </ShopWrapper>
+    <Grid>
+      <GlobalStyles />
+      <Header>
+        <Logo />
+      </Header>
+      <ItemGridWrapper>
+        <ItemGrid />
+      </ItemGridWrapper>
       <Cart />
-    </MainWrapper>
+    </Grid>
   )
 }
 
-const MainWrapper = styled.div`
-  display: flex;
-  width: 75vw;
-`
-
-const ShopWrapper = styled.div`
-  position: relative;
-  width: 100%;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 75vw 25vw;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header cart'
+    'main cart';
 `
 
 const Header = styled.header`
+  grid-area: header;
   padding: 32px 64px;
 `
 
 const ItemGridWrapper = styled.main`
+  grid-area: main;
   padding: 16px 64px;
 `
-
-export default App
