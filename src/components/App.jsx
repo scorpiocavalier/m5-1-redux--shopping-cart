@@ -18,15 +18,14 @@ const App = () => {
         </ItemGridWrapper>
         <GlobalStyles />
       </ShopWrapper>
-      <CartWrapper>
-        <Cart />
-      </CartWrapper>
+      <Cart />
     </MainWrapper>
   )
 }
 
 const MainWrapper = styled.div`
   display: flex;
+  width: 75vw;
 `
 
 const ShopWrapper = styled.div`
@@ -35,19 +34,11 @@ const ShopWrapper = styled.div`
 `
 
 const Header = styled.header`
-  grid-area: header;
   padding: 32px 64px;
 `
 
 const ItemGridWrapper = styled.main`
-  grid-area: main;
   padding: 16px 64px;
-`
-
-const CartWrapper = styled.div`
-  grid-area: sidebar;
-  width: 35vw;
-  border-left: 3px dashed #ff406e;
 `
 
 export default App

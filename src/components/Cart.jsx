@@ -44,10 +44,14 @@ const Bold = styled.span`
 `
 
 const CartWrapper = styled(ColWrapper)`
+  position: fixed;
+  right: 0;
+  width: 25vw;
   height: 100vh;
   padding: 30px 20px;
   color: white;
   background: #401f43;
+  border-left: 3px dashed #ff406e;
 `
 
 const HeadingWrapper = styled(ColWrapper)`
