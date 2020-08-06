@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import CartItem from './CartItem'
+
 export default () => {
   const numItems = 0
   const _numCartItems_ = `${numItems} ${numItems > 1 ? 'Items' : 'Item'}`
@@ -16,7 +18,7 @@ export default () => {
       </Header>
 
       <Main>
-        {/* map through all cartItems from store state */}
+        <CartItem />
       </Main>
 
       <Footer>
