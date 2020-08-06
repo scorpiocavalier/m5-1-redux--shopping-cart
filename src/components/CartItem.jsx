@@ -9,7 +9,7 @@ export default () => {
         <DeleteBtn>X</DeleteBtn>
       </Row>
       <QtyRow>
-        Quantity:<Qty>1</Qty>
+        Quantity:<Qty>10</Qty>
       </QtyRow>
     </Wrapper>
   )
@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   border: 2px dashed #4e3050;
   display: flex;
   flex-direction: column;
+  margin-bottom: 5px;
 `
 
 const Row = styled.div`
@@ -41,6 +42,7 @@ const QtyRow = styled(Row)`
   justify-content: flex-start;
   align-items: center;
   background: #301732;
+  font-size: 14px;
 `
 
 const Qty = styled.span`
@@ -48,6 +50,5 @@ const Qty = styled.span`
   color: #301732;
   padding: 4px 8px;
   margin-left: 5px;
-  font-size: 14px;
   font-weight: 600;
 `

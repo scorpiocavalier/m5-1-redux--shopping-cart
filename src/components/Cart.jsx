@@ -19,6 +19,10 @@ export default () => {
 
       <Main>
         <CartItem />
+        <CartItem />
+        <CartItem />
+        <CartItem />
+        <CartItem />
       </Main>
 
       <Footer>
