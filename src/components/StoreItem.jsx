@@ -1,13 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import Button from './Button';
+import Button from './Button'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../actions'
 
 const StoreItem = ({ id, title, src, price }) => {
+  const dispatch = useDispatch()
+
   const formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  }).format(price / 100);
+  }).format(price / 100)
 
   return (
     <Wrapper>
@@ -15,10 +19,12 @@ const StoreItem = ({ id, title, src, price }) => {
         <Image src={src} alt={`${title} sticker`} />
       </ImageWrapper>
       <Title>{title}</Title>
-      <Button>Add to Cart — {formattedPrice}</Button>
+      <Button onClick={dispatch(addItem({ id, title, price }))}>
+        Add to Cart — {formattedPrice}
+      </Button>
     </Wrapper>
-  );
-};
+  )
+}
 
 const Wrapper = styled.article`
   padding: 16px;
@@ -29,18 +35,18 @@ const Wrapper = styled.article`
     3px 41.8px 33.4px rgba(0, 0, 0, 0.028), 3px 100px 80px rgba(0, 0, 0, 0.02);
   border-radius: 16px;
   text-align: center;
-`;
+`
 
 const ImageWrapper = styled.div`
   overflow: hidden;
   border-radius: 12px;
   border: 3px solid rgba(0, 0, 0, 0.1);
-`;
+`
 
 const Image = styled.img`
   display: block;
   max-width: 100%;
-`;
+`
 
 const Title = styled.h2`
   margin: 0;
@@ -48,6 +54,6 @@ const Title = styled.h2`
   margin-top: 8px;
   font-size: 22px;
   font-weight: 600;
-`;
+`
 
-export default StoreItem;
+export default StoreItem

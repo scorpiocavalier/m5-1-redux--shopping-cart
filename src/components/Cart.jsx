@@ -5,16 +5,15 @@ import CartItem from './CartItem'
 
 export default () => {
   const numItems = 0
-  const _numCartItems_ = `${numItems} ${numItems > 1 ? 'Items' : 'Item'}`
-  const cartTotal = 12.34
-  const _totalLabel_ = `Total: `
-  const _cartTotal_ = `$${cartTotal}`
+  const numCartItems = `${numItems} ${numItems > 1 ? 'Items' : 'Item'}`
+  const totalLabel = `Total: `
+  const cartTotal = `$${12.34}`
 
   return (
     <Grid>
       <Header>
         <CartTitle>Your Cart</CartTitle>
-        <ItemCount>{_numCartItems_}</ItemCount>
+        <ItemCount>{numCartItems}</ItemCount>
       </Header>
 
       <Main>
@@ -27,7 +26,8 @@ export default () => {
 
       <Footer>
         <Total>
-          {_totalLabel_}<Bold>{_cartTotal_}</Bold>
+          {totalLabel}
+          <Bold>{cartTotal}</Bold>
         </Total>
         <PurchaseBtn>
           <Bold>Purchase</Bold>
@@ -57,9 +57,9 @@ const Grid = styled.div`
   display: grid;
   grid: 1fr 8fr 1fr / 1fr;
   grid-template-areas:
-    "header"
-    "main"
-    "footer";
+    'header'
+    'main'
+    'footer';
   position: sticky;
   top: 0;
   height: 100vh;
