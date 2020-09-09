@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import CartItem from './CartItem'
@@ -7,14 +7,22 @@ import { getStoreItemArray } from '../reducers'
 
 export default () => {
   const storeItems = useSelector(getStoreItemArray)
+  const [cartTotal, setCartTotal] = useState(0)
 
   console.log('storeItems', storeItems)
+  console.log('cartTotal', cartTotal)
 
   const numCartItems = `${storeItems.length} ${
     storeItems.length > 1 ? 'Items' : 'Item'
   }`
-  const totalLabel = `Total: `
-  const cartTotal = `$${12.34}`
+
+  useEffect(() => {
+    const sum = storeItems.reduce(
+      (accumulator, item) => accumulator + item.price,
+      0
+    )
+    setCartTotal(sum / 100)
+  }, [storeItems])
 
   return (
     <Grid>
@@ -24,15 +32,15 @@ export default () => {
       </Header>
 
       <Main>
-        {storeItems.map((item, index) => (
-          <CartItem key={index} item={item} />
-        ))}
+        {storeItems.map((item, index) => {
+          return <CartItem key={index} item={item} />
+        })}
       </Main>
 
       <Footer>
         <Total>
-          {totalLabel}
-          <Bold>{cartTotal}</Bold>
+          {`Total: `}
+          <Bold>${cartTotal}</Bold>
         </Total>
         <PurchaseBtn>
           <Bold>Purchase</Bold>
