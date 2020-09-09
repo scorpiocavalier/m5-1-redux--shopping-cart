@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
+import { removeItem } from '../actions'
 
-export default ({ item: { title, quantity } }) => {
+export default ({ item: { id, title, quantity } }) => {
+  const dispatch = useDispatch()
+
   return (
     <Wrapper>
       <Row>
         <ItemTitle>{title}</ItemTitle>
-        <DeleteBtn>X</DeleteBtn>
+        <DeleteBtn onClick={() => dispatch(removeItem(id))}>X</DeleteBtn>
       </Row>
       <QtyRow>
         Quantity:<Qty>{quantity}</Qty>
