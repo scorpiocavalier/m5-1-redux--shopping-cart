@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default () => {
+export default ({ item: { title, quantity } }) => {
   return (
     <Wrapper>
       <Row>
-        <ItemTitle>Hello World</ItemTitle>
+        <ItemTitle>{title}</ItemTitle>
         <DeleteBtn>X</DeleteBtn>
       </Row>
       <QtyRow>
-        Quantity:<Qty>10</Qty>
+        Quantity:<Qty>{quantity}</Qty>
       </QtyRow>
     </Wrapper>
   )

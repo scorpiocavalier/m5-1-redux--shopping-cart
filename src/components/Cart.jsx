@@ -2,10 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 
 import CartItem from './CartItem'
+import { useSelector } from 'react-redux'
+import { getStoreItemArray } from '../reducers'
 
 export default () => {
-  const numItems = 0
-  const numCartItems = `${numItems} ${numItems > 1 ? 'Items' : 'Item'}`
+  const storeItems = useSelector(getStoreItemArray)
+
+  console.log('storeItems', storeItems)
+
+  const numCartItems = `${storeItems.length} ${
+    storeItems.length > 1 ? 'Items' : 'Item'
+  }`
   const totalLabel = `Total: `
   const cartTotal = `$${12.34}`
 
@@ -17,11 +24,9 @@ export default () => {
       </Header>
 
       <Main>
-        <CartItem />
-        <CartItem />
-        <CartItem />
-        <CartItem />
-        <CartItem />
+        {storeItems.map((item, index) => (
+          <CartItem key={index} item={item} />
+        ))}
       </Main>
 
       <Footer>
