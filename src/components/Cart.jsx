@@ -18,10 +18,10 @@ export default () => {
 
   useEffect(() => {
     const sum = storeItems.reduce(
-      (accumulator, item) => accumulator + item.price,
+      (accumulator, item) => accumulator + item.price * item.quantity,
       0
     )
-    setCartTotal(sum / 100)
+    setCartTotal((sum / 100).toFixed(2))
   }, [storeItems])
 
   return (

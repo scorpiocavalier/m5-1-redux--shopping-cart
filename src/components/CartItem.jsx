@@ -1,19 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { removeItem } from '../actions'
+import { removeItem, updateItem } from '../actions'
 
-export default ({ item: { id, title, quantity } }) => {
+export default ({ item }) => {
+  const { id, title, quantity } = item
+
   const dispatch = useDispatch()
+
+  const handleDelete = (id) => dispatch(removeItem(id))
+
+  const handleChange = (e) => {
+    const newItem = { ...item, quantity: e.target.value }
+    dispatch(updateItem(id, newItem))
+  }
 
   return (
     <Wrapper>
       <Row>
         <ItemTitle>{title}</ItemTitle>
-        <DeleteBtn onClick={() => dispatch(removeItem(id))}>X</DeleteBtn>
+        <DeleteBtn onClick={() => handleDelete(id)}>X</DeleteBtn>
       </Row>
       <QtyRow>
-        Quantity:<Qty>{quantity}</Qty>
+        Quantity:
+        <QtyInput type="text" value={quantity} onChange={handleChange} />
       </QtyRow>
     </Wrapper>
   )
@@ -49,10 +59,9 @@ const QtyRow = styled(Row)`
   font-size: 14px;
 `
 
-const Qty = styled.span`
-  background: white;
-  color: #301732;
-  padding: 4px 8px;
+const QtyInput = styled.input`
+  width: 40px;
+  padding: 4px;
   margin-left: 5px;
-  font-weight: 600;
+  text-align: center;
 `
